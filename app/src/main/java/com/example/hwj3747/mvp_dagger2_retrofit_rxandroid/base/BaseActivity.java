@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v4.view.LayoutInflaterFactory;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 
 import com.example.hwj3747.mvp_dagger2_retrofit_rxandroid.common.App;
@@ -77,4 +78,13 @@ public abstract class BaseActivity extends AbsBaseActivity {
         }
         return mActiveFragment;
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            this.finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

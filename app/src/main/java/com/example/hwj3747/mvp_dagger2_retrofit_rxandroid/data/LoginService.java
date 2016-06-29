@@ -5,18 +5,22 @@ import java.util.concurrent.TimeUnit;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
+import retrofit.http.POST;
 import rx.Observable;
 
 /**
  * Created by Administrator on 2016/1/28.
+ *
  */
-public class AbsService {
+public class LoginService {
 
-    private static final String FORUM_SERVER_URL = "http://115.159.102.128:9000";
+    private static final String FORUM_SERVER_URL = "http://192.168.1.151:8888";/*Tip:这里写域名，目前在本地测试可以用服务器的电脑的ip地址+端口号*/
     private AbsApi mAbsApi;
 
-    public AbsService() {
+    public LoginService() {
 
         RequestInterceptor requestInterceptor = request -> {
             request.addHeader("Accept", "text/html");
@@ -30,7 +34,6 @@ public class AbsService {
                 .setEndpoint(FORUM_SERVER_URL)
                 .setRequestInterceptor(requestInterceptor)
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                        // .setClient(new OkClient(new OkHttpClient()))
                 .build();
 
         mAbsApi = restAdapter.create(AbsApi.class);
@@ -41,16 +44,10 @@ public class AbsService {
     }
 
     public interface AbsApi {
-
-        @GET("/sys/sms")
-        Observable<AbsReturn<DefaultData,DefaultObj>>
-        test();//发送验证码
+        @FormUrlEncoded
+        @POST("/app/admin/test")/*Tip：这连个注解记得不能丢，如果是请求的方法中不带参数就用@GET 带参数用@POST*/
+        Observable<String> validateLogin (@Field("userName") String name,@Field("userPwd") String pwd);//登录验证
+        /*Tip:每个参数都要加上@Field*   返回值Observable<String> 类型所包含的字段要跟服务端返回json格式中的字段命名要一样，这个等我服务端做好会告诉你们*/
     }
-    public Observable<String> getValue() {
-        return Observable.defer(() -> {
-            return Observable.just("Hello World!");
-        })
-                .delay(1, TimeUnit.SECONDS);
 
-    }
 }

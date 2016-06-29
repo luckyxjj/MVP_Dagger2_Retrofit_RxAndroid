@@ -40,9 +40,15 @@ public abstract class EndObserver<T> implements Observer<T> {
 
     @Override
     public void onNext(T entity) {
-        if(((AbsReturn) entity).getCode()==101){
+        /*if(((AbsReturn) entity).getCode()==101){
             Toast.makeText(mContext,"登录失效，请重新登录",Toast.LENGTH_SHORT).show();
+        }*/
+        if(entity instanceof AbsReturn) {
+            if (((AbsReturn) entity).getCode() == 101) {
+                Toast.makeText(mContext, "登录失效，请重新登录", Toast.LENGTH_SHORT).show();
+            }
         }
+
         onMyNext(entity);
     }
 }

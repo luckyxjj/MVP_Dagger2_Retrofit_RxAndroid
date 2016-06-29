@@ -9,8 +9,9 @@
         android:name=".common.App"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+       <!-- <activity android:name=".ui.test.TestActivity"></activity>-->
         <activity
-            android:name=".ui.test.TestActivity"
+            android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
