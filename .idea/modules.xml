@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MVP_Dagger2_Retrofit_RxAndroid.iml" filepath="$PROJECT_DIR$/MVP_Dagger2_Retrofit_RxAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonlibrary/commonlibrary.iml" filepath="$PROJECT_DIR$/commonlibrary/commonlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fly.iml" filepath="$PROJECT_DIR$/fly.iml" />
     </modules>
   </component>
 </project>
